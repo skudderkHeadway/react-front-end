@@ -1,0 +1,7 @@
+$red-600: #DC2626;
+
+.textInput {
+  &:global(.has-error) {
+    box-shadow: 0 0 8px $red-600;
+  }
+}

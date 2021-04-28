@@ -4,6 +4,7 @@ import { isValidUrl, isValidSlug } from "../util/url";
 import Button from "./Button";
 import ErrorMsg from "./ErrorMsg";
 import FormItem from "./FormItem";
+import TextInput from "./TextInput";
 
 const UrlShortenForm = () => {
   const {
@@ -21,11 +22,10 @@ const UrlShortenForm = () => {
   return (
     <form onSubmit={handleSubmit(doSubmit)}>
       <FormItem>
-        <input
-          className={`text-black ${errors?.url && "border-2 border-red-600"}`}
-          type="text"
+        <TextInput
           placeholder="Make your links shorter"
           required
+          hasError={errors?.url}
           aria-label="URL to shorten"
           {...register("url", { required: true, validate: isValidUrl })}
         />
@@ -37,12 +37,16 @@ const UrlShortenForm = () => {
         )}
       </FormItem>
       <FormItem>
-        <input
+        <TextInput
           className="text-black"
-          type="text"
+          // type="text"
           placeholder="Customize your link"
           aria-label="Custom text for your shortened link"
-          {...register("slug", { validate: isValidSlug })}
+          {...register("slug", {
+            validate: (value) => {
+              return !value || isValidSlug(value);
+            }
+          })}
           // TODO: disallow entering non-alphanumeric characters instead of giving error after the fact?
         />
         {errors?.slug?.type === "validate" && (
