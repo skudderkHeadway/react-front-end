@@ -1,14 +1,16 @@
 import "./styles.css";
-import GraphQlTest from "./GraphQlTest";
-import Container from "./components/Container";
+import Container from "./layout/Container";
+import Header from "./layout/Header";
+import MainContent from "./layout/MainContent";
+import Footer from "./layout/Footer";
 
 export default function App() {
   return (
     <div className="App">
       <Container>
-        <h1>Hello CodeSandbox</h1>
-        <h2>Start editing to see some magic happen!</h2>
-        <GraphQlTest />
+        <Header />
+        <MainContent />
+        <Footer />
       </Container>
     </div>
   );
