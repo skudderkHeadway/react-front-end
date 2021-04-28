@@ -19,7 +19,7 @@ const GraphQlTest = () => {
       {error && <p>Error</p>}
       {data && (
         <>
-          <p className="border">We have data!</p>
+          <p className="border border-red-500">We have data!</p>
           {data?.user?.name && <p>User's name is: {data.user.name}</p>}
           {data?.user?.email && <p>User's email is: {data.user.email}</p>}
         </>
