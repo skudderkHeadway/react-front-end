@@ -1,0 +1,27 @@
+$green-50: #ECFDF5;
+$green-900: #064E3B;
+// TODO: create consolidated colors.scss file to make variables available?
+// TODO: real solution: incorporate Tailwind CSS into build process, use custom theme
+
+.button {
+  &:global(.primary) {
+    &:hover {
+      background-color: $green-900;
+      color: $green-50;
+    }
+  }
+
+  &:global(.no-bg) {
+    &:hover {
+      color: $green-900;
+    }
+  }
+
+  &:global(.stroke) {
+    &:hover {
+      color: $green-900;
+      border-color: $green-900;
+      background-color: $green-50;
+    }
+  }
+}

@@ -1,21 +1,57 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { isValidUrl, isValidSlug } from "../util/url";
 import Button from "./Button";
+import ErrorMsg from "./ErrorMsg";
+import FormItem from "./FormItem";
 
 const UrlShortenForm = () => {
-  const { register, watch } = useForm({ mode: "all" });
-  console.log(watch());
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({ mode: "all" });
+
+  const doSubmit = (data) => {
+    console.log(data);
+  };
+
+  console.log(errors);
 
   return (
-    <form>
-      <input
-        className="text-black"
-        type="text"
-        placeholder="Make your links shorter"
-        required
-        {...register("url", { required: true })}
-      />
-      <input name="slug" type="text" placeholder="Customize your link" />
+    <form onSubmit={handleSubmit(doSubmit)}>
+      <FormItem>
+        <input
+          className={`text-black ${errors?.url && "border-2 border-red-600"}`}
+          type="text"
+          placeholder="Make your links shorter"
+          required
+          aria-label="URL to shorten"
+          {...register("url", { required: true, validate: isValidUrl })}
+        />
+        {errors?.url?.type === "required" && (
+          <ErrorMsg>Don't forget to enter a URL to shorten.</ErrorMsg>
+        )}
+        {errors?.url?.type === "validate" && (
+          <ErrorMsg>Please enter a valid URL.</ErrorMsg>
+        )}
+      </FormItem>
+      <FormItem>
+        <input
+          className="text-black"
+          type="text"
+          placeholder="Customize your link"
+          aria-label="Custom text for your shortened link"
+          {...register("slug", { validate: isValidSlug })}
+          // TODO: disallow entering non-alphanumeric characters instead of giving error after the fact?
+        />
+        {errors?.slug?.type === "validate" && (
+          <ErrorMsg>
+            Please enter only letters and numbers (no spaces or other
+            characters).
+          </ErrorMsg>
+        )}
+      </FormItem>
       <Button type="submit" theme="primary">
         Shorten URL
       </Button>
