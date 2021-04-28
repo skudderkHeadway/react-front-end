@@ -1,3 +1,3 @@
-const BRAND_NAME = "LinkShortener";
+const BRAND_NAME = "ShortenSuite";
 
 export default BRAND_NAME;
