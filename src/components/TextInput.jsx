@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./TextInput.module.scss";
 
 const TextInput = React.forwardRef(({ className, hasError, ...rest }, ref) => {
-  const errorClasses = "has-error border-2 border-red-600";
+  const errorClasses = "has-error border-2 border-red-500";
 
   return (
     <input

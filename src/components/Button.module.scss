@@ -1,7 +1,4 @@
-$green-50: #ECFDF5;
-$green-900: #064E3B;
-// TODO: create consolidated colors.scss file to make variables available?
-// TODO: real solution: incorporate Tailwind CSS into build process, use custom theme
+@import '../colors';
 
 .button {
   &:global(.primary) {
