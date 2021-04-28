@@ -1,7 +1,14 @@
 import React from "react";
+import BrandLogo from "../components/BrandLogo";
+import HeaderMenu from "./HeaderMenu";
 
 const Header = () => {
-  return <div>Header PLACEHOLDER</div>;
+  return (
+    <div>
+      <BrandLogo />
+      <HeaderMenu />
+    </div>
+  );
 };
 
 export default Header;
