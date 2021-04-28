@@ -1,7 +1,12 @@
 import React from "react";
 
-const Button = ({ theme, children }) => {
-  return <button className="p-2">{children}</button>;
+const Button = ({ children, className, theme, ...rest }) => {
+  return (
+    // TODO: implement theme prop
+    <button className={`p-2 ${className || ""}`} {...rest}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;
