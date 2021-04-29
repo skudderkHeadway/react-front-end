@@ -17,8 +17,6 @@ const UrlShortenForm = () => {
     console.log(data);
   };
 
-  console.log(errors);
-
   return (
     <form onSubmit={handleSubmit(doSubmit)}>
       <FormItem>

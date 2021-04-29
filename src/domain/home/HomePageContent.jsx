@@ -2,6 +2,7 @@ import React from "react";
 import UrlShortenForm from "../../components/UrlShortenForm";
 import BRAND_NAME from "../../util/brand/index";
 import TextLink from "../../components/TextLink";
+import LinkList from "../../components/LinkList";
 
 const HomePageContent = () => {
   return (
@@ -12,6 +13,7 @@ const HomePageContent = () => {
         <TextLink href="#">Terms of Use</TextLink> and highly invasive{" "}
         <TextLink href="#">Privacy Policy</TextLink>.
       </div>
+      <LinkList />
     </div>
   );
 };
