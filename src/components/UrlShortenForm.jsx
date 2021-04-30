@@ -5,6 +5,18 @@ import Button from "./Button";
 import ErrorMsg from "./ErrorMsg";
 import FormItem from "./FormItem";
 import TextInput from "./TextInput";
+import { gql, useMutation } from "@apollo/client";
+import { ALL_LINKS_QUERY } from "./LinkList";
+
+const CREATE_LINK_QUERY = gql`
+  mutation createLink($url: String!, $slug: String!) {
+    createLink(url: $url, slug: $slug) {
+      id
+      url
+      slug
+    }
+  }
+`;
 
 const UrlShortenForm = () => {
   const {
@@ -13,8 +25,13 @@ const UrlShortenForm = () => {
     formState: { errors }
   } = useForm({ mode: "all" });
 
+  const [createLink, { data }] = useMutation(CREATE_LINK_QUERY, {
+    refetchQueries: [{ query: ALL_LINKS_QUERY }]
+  });
+
   const doSubmit = (data) => {
     console.log(data);
+    createLink({ variables: { url: data.url, slug: data.slug } });
   };
 
   return (

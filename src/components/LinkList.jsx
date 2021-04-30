@@ -2,17 +2,17 @@ import React from "react";
 import { gql, useQuery } from "@apollo/client";
 import LinkListLink from "./LinkListLink";
 
-const LinkList = () => {
-  const ALL_LINKS_QUERY = gql`
-    query {
-      allLinks {
-        id
-        url
-        slug
-      }
+export const ALL_LINKS_QUERY = gql`
+  query {
+    allLinks {
+      id
+      url
+      slug
     }
-  `;
+  }
+`;
 
+const LinkList = () => {
   const { loading, error, data } = useQuery(ALL_LINKS_QUERY);
 
   return (
